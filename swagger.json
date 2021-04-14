@@ -1,0 +1,1178 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "all api documation commonApp nodeJs",
+        "version": "1.0.0",
+        "title": "Swagger of UMS",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "mansuri.11300406@lpu.in"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/v1",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users/login": {
+            "post": {
+                "summary": "user login",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "user",
+                    "description": "The user login.",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "register_id",
+                            "password"
+                        ],
+                        "properties": {
+                            "register_id": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }],
+                "responses": {}
+            }
+        },
+        "/users/create-student": {
+            "post": {
+                "summary": "create_student",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user register.",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "register_id",
+                                "password"
+                            ],
+                            "properties": {
+                                "register_id": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                },
+                                "program_id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/create-faculty": {
+            "post": {
+                "summary": "create faculty",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The faculty register.",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "register_id",
+                                "password"
+                            ],
+                            "properties": {
+                                "register_id": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/create-program": {
+            "post": {
+                "summary": "create program",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "create programs",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "register_id",
+                                "password"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/get-all-students": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limit",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "sort by",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "for search",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+
+        "/users/get-all-faculties": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limit",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "sort by",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "for search",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+
+        "/users/logout": {
+            "get": {
+                "summary": "user logout",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/change-password/": {
+            "put": {
+                "summary": "user change password",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user login",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "old_password",
+                                "new_password",
+                                "confirm_password"
+                            ],
+                            "properties": {
+                                "old_password": {
+                                    "type": "string"
+                                },
+                                "new_password": {
+                                    "type": "string"
+                                },
+                                "confirm_password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/forgot-password": {
+            "post": {
+                "summary": "user forgot password",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "user",
+                    "description": "The user login",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "email",
+                            "password"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }],
+                "responses": {}
+            }
+        },
+
+        "/users/": {
+            "get": {
+                "summary": "get user deatils",
+                "x-swagger-router-controller": "bar",
+                "operationId": "impossible",
+                "tags": [
+                    "Common"
+                ],
+                "description": "",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                }],
+                "responses": {}
+            },
+            "put": {
+                "summary": "update user",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Common"
+                ],
+                "description": "set user skills:- {skill_level:1}.. 'BEGGINER': 1,'INTERMEDIATE': 2,'ADVANCED': 3   \n set theme:- {theme_type: 1} 'WHITE:1, BLACK:2",
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user update",
+                        "schema": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                },
+                                "father_name": {
+                                    "type": "string"
+                                },
+                                "mother_name": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "date_of_birth": {
+                                    "type": "number"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "country_id": {
+                                    "type": "string"
+                                },
+                                "state_id": {
+                                    "type": "string"
+                                },
+                                "ciry_id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/user-details/{user_id}": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "get any faculty or student details",
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                    "name": "user_id",
+                    "in": "path",
+                    "description": "Enter user_id",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/contact-us": {
+            "post": {
+                "summary": "user can add query",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "add contactUs query",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "email",
+                                "username",
+                                "query"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "query": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+
+
+        "/contactUs/get-contactUs-list": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Admin-ContactUs"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "status",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limit",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "sort by",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "for search",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/contactUs/get-contactUs-details/{contactUs_id}": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Admin-ContactUs"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "contactUs_id",
+                        "in": "path",
+                        "description": "Enter contactUs_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/contactUs/close-contactUs-request/{contactUs_id}": {
+            "put": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Admin-ContactUs"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "contactUs_id",
+                        "in": "path",
+                        "description": "Enter contactUs_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+
+
+        "/country/country-list": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "tags": [
+                    "country"
+                ],
+                "description": "get all country",
+                "parameters": [],
+                "responses": {}
+            }
+        },
+        "/country/states-of-country/{country_id}": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "get all state of particular county",
+                "tags": [
+                    "country"
+                ],
+                "parameters": [{
+                    "name": "country_id",
+                    "in": "path",
+                    "description": "Enter country_id",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/country/cities-of-state/{state_id}": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "get all city of particular state",
+                "tags": [
+                    "country"
+                ],
+                "parameters": [{
+                    "name": "state_id",
+                    "in": "path",
+                    "description": "Enter state_id",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/create-course": {
+            "post": {
+                "summary": "create course",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The create course.",
+                        "schema": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/course-list": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "status",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limit",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "sort by",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "for search",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+
+        "/users/assign-course-faculty": {
+            "post": {
+                "summary": "select course",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The Assign faculty course.",
+                        "schema": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "course_id": {
+                                    "type": "string"
+                                },
+                                "user_id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/select-course": {
+            "post": {
+                "summary": "assign-course-faculty",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The Students select course.",
+                        "schema": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "course_ids": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/student-course-list": {
+            "get": {
+                "summary": "get user's selected courses",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/faculty-course-list": {
+            "get": {
+                "summary": "get faculty's assigned courses",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Faculty"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/add-student-attendance": {
+            "post": {
+                "summary": "add-student-attendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Faculty"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The Students select course.",
+                        "schema": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "course_id": {
+                                    "type": "string"
+                                },
+                                "student_ids": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "student_id": {
+                                                "type": "string"
+                                            },
+                                            "is_present": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/get-student-attendance": {
+            "get": {
+                "summary": "get faculty's assigned courses",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                },
+                {
+                    "name": "course_id",
+                    "in": "query",
+                    "description": "Enter course_id",
+                    "required": false,
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/add-faculty-attendance": {
+            "post": {
+                "summary": "add-faculty-attendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "add-faculty-attendance.",
+                        "schema": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "faculty_ids": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "faculty_id": {
+                                                "type": "string"
+                                            },
+                                            "is_present": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/add-announcement": {
+            "post": {
+                "x-swagger-router-controller": "bar",
+                "description": "add announcement",
+                "tags": [
+                    "Admins"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "user",
+                    "description": "add announcement.",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "category": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ],
+                "responses": {}
+            }
+        },
+        "/users/get-all-announcement": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limit",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "sort by",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "for search",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/get-faculty-attendance": {
+            "get": {
+                "summary": "get faculty's attendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Faculty"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        },
+        "/users/program-list": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "an authorization header, Please add Bearer keyword before token",
+                        "required": "true",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "status",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limit",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "sort by",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "for search",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/users/program-details/{program_id}": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "description": "",
+                "tags": [
+                    "Common"
+                ],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "an authorization header, Please add Bearer keyword before token",
+                    "required": "true",
+                    "type": "string"
+                },
+                {
+                    "name": "program_id",
+                    "in": "path",
+                    "description": "Enter program_id",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {}
+            }
+        }
+    }
+}
